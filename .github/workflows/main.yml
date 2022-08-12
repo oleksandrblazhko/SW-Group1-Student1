@@ -5,8 +5,13 @@ name: PullRequestControl
 # Controls when the workflow will run
 on: [push]
 jobs:
-      my_testing:
+      my_testing1:
          runs-on: ubuntu-latest
          steps:
            - name: Print Hello Massage
-             run: echo "Hello World!"
+             run: echo "Hello World1!"
+      my_testing2:
+         runs-on: ubuntu-latest
+         steps:
+           - name: Print Hello Massage
+             run: echo "Hello World2!"

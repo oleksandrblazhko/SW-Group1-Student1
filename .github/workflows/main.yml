@@ -3,7 +3,10 @@
 name: PullRequestControl
 
 # Controls when the workflow will run
-on: [push]
+on:
+ push:
+       # обробляти лише main-гілку
+       branches: main
 jobs:
       my_checkout:
          # використовувати Docker-image із вказаною версією ОС

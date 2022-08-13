@@ -6,16 +6,19 @@ name: PullRequestControl
 on: [push]
 jobs:
       my_testing1:
+         # використовувати Docker-image із вказаною версією ОС
          runs-on: ubuntu-latest
          steps:
            - name: checkout
+             # клонування репозиторія для подальшої роботи з файлами на сервері 
+             # в каталозі $GITHUB_WORKSPACE"
              uses: "actions/checkout@v3"
            - name: Print
              run: |
               echo "Workspace:      $GITHUB_WORKSPACE"
               cat $GITHUB_WORKSPACE/README.md
-           - name: Install sqlfluff
-             run: pip install sqlfluff
+           #- name: Install sqlfluff
+           #  run: pip install sqlfluff
            - name: sqlfluff
              run: sqlfluff version
       my_testing2:

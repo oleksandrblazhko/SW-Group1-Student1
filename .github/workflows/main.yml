@@ -17,8 +17,8 @@ jobs:
              run: |
               echo "Workspace:      $GITHUB_WORKSPACE"
               cat $GITHUB_WORKSPACE/README.md
-           #- name: Install sqlfluff
-           #  run: pip install sqlfluff
+           - name: Install sqlfluff
+             run: pip install sqlfluff
            - name: sqlfluff
              run: sqlfluff version
       my_testing2:

@@ -10,6 +10,10 @@ jobs:
          steps:
            - name: Print Hello Massage
              run: echo "Hello World1!"
+           - name: Print python
+             run: python --version
+           - name: Print pip
+             run: pip --version
       my_testing2:
          runs-on: ubuntu-latest
          needs: [my_testing1]

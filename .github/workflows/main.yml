@@ -24,6 +24,10 @@ jobs:
          runs-on: ubuntu-latest
          needs: [my_checkout]
          steps:
+          - name: checkout
+            # клонування репозиторія для подальшої роботи з файлами на сервері 
+            # в каталозі $GITHUB_WORKSPACE
+            uses: "actions/checkout@v3"
           - name: Start linter
             run: |
              pip install sqlfluff

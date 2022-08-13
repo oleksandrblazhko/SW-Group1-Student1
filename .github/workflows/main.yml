@@ -10,14 +10,10 @@ jobs:
          steps:
            - name: checkout
              uses: "actions/checkout@v3"
-           - name: Print Hello Massage
+           - name: Print
              run: |
-               echo "Workflow name:  $GITHUB_WORKFLOW"
-               echo "Workspace:      $GITHUB_WORKSPACE"
-           - name: Print python
-             run: python --version
-           - name: Print pip
-             run: pip --version
+              echo "Workspace:      $GITHUB_WORKSPACE"
+              cat $GITHUB_WORKSPACE/README.md
            - name: Install sqlfluff
              run: pip install sqlfluff
            - name: sqlfluff

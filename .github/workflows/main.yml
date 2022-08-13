@@ -11,7 +11,9 @@ jobs:
            - name: checkout
              uses: "actions/checkout@v3"
            - name: Print Hello Massage
-             run: echo "Hello World1!"
+             run: |
+               echo "Workflow name:  $GITHUB_WORKFLOW"
+               echo "Workspace:      $GITHUB_WORKSPACE"
            - name: Print python
              run: python --version
            - name: Print pip

@@ -11,20 +11,28 @@ jobs:
          steps:
            - name: checkout
              # клонування репозиторія для подальшої роботи з файлами на сервері 
-             # в каталозі $GITHUB_WORKSPACE"
+             # в каталозі $GITHUB_WORKSPACE
              uses: "actions/checkout@v3"
            - name: Print
              run: |
               echo "Workspace:      $GITHUB_WORKSPACE"
               cat $GITHUB_WORKSPACE/README.md
-           - name: Install sqlfluff
-             run: pip install sqlfluff
-           - name: sqlfluff
-             run: sqlfluff version
       my_testing2:
          runs-on: ubuntu-latest
          needs: [my_testing1]
          steps:
-           - name: Print Hello Massage
-             run: echo "Hello World2!"
-
+         - uses: actions/checkout@v2
+         - uses: yu-iskw/action-sqlfluff@v3
+           with:
+            github_token: ${{ secrets.github_token }}
+            reporter: github-pr-review
+            sqlfluff_version: "1.2.0"
+            sqlfluff_command: "fix" # Or "lint"
+            config: "${{ github.workspace }}/.sqlfluff"
+            paths: '${{ github.workspace }}/models'
+         - name: 'Show outputs (Optional)'
+           shell: bash
+           run: |
+            echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
+            echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
+           

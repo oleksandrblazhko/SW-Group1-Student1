@@ -8,6 +8,8 @@ jobs:
       my_testing1:
          runs-on: ubuntu-latest
          steps:
+           - name: checkout
+             uses: "actions/checkout@v3"
            - name: Print Hello Massage
              run: echo "Hello World1!"
            - name: Print python

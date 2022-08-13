@@ -27,6 +27,5 @@ jobs:
           - name: Start linter
             run: |
              pip install sqlfluff
-             echo "  SELECT a  +  b FROM tbl;  " > test.sql
-             sqlfluff lint test.sql --dialect ansi
+             sqlfluff lint ${{GITHUB_WORKSPACE}} --dialect ansi
            

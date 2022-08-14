@@ -6,7 +6,7 @@ name: PullRequestControl
 on:
  push:
        # обробляти лише main-гілку
-       branches: main
+       branches: empty # main
 jobs:
       my_checkout:
          # використовувати Docker-image із вказаною версією ОС

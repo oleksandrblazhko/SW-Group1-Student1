@@ -3,11 +3,14 @@ name: Lint Models
 on: [push]
 
 jobs:
-  lint-models:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: "actions/checkout@v3"
-      - name: Install SQLFluff
-        run: "pip install sqlfluff"
-      - name: Lint models
-        run: "sqlfluff lint models"
+ my_linter_test:
+         runs-on: ubuntu-latest
+         steps:
+          - name: checkout
+            # клонування репозиторія для подальшої роботи з файлами на сервері 
+            # в каталозі $GITHUB_WORKSPACE
+            uses: "actions/checkout@v3"
+          - name: Start linter
+            run: |
+             pip install sqlfluff
+             sqlfluff lint $GITHUB_WORKSPACE/sql_query --dialect oracle
